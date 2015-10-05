@@ -3,7 +3,7 @@
 describe('Controller: I18nCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('cryptoClientApp'));
+  beforeEach(module('cryptoClient'));
 
   var I18nCtrl,
     scope;
