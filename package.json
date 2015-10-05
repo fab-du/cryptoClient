@@ -1,7 +1,10 @@
 {
   "name": "cryptoClient",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-angular-translate": "^0.3.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
