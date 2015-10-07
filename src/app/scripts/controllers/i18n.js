@@ -13,7 +13,10 @@
 
     function i18controller( $translate, $scope ){
         $scope.switchLanguage = function (key) {
-            $translate.use(key);
+            var currentkey = $translate.use();
+            if ( currentkey !== key ){
+                $translate.use( key );
+            }
         };
     }
 

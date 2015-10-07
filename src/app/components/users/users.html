@@ -1,4 +1,24 @@
+<div ng-controller="userController" class="container">
+<h1> {{ 'common.name.user' | translate }} </h1>
 
-<div .jumbotron .containter >
-    
+    <div class="table-responsive">
+        <table data-click-to-select="true" data-toggle="table" class="table table-bordered table-striped">
+            <thead>
+                <tr class="info">
+                    <th data-halign="center">index</th>
+                    <th data-halign="center">{{ 'common.name.firstname' | translate }} </th>
+                    <th data-halign="center">{{ 'common.name.secondname' | translate }} </th>
+                    <th data-halign="center">{{ 'common.name.email' | translate }} </th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr ng-repeat="user in users">
+                    <td data-align="center">{{user.firstname}}</td>
+                    <td data-align="center">{{user.firstname}}</td>
+                    <td data-align="center">{{user.firstname}}</td>
+                    <td data-align="center">{{user.email}}    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

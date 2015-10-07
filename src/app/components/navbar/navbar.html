@@ -7,13 +7,61 @@
     </div>
 
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+    <div ng-controller="I18nCtrl" class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
           <li class="active"><a ng-href="#">  {{ 'header.home'  | translate }}  </a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
+
+          <li><a ui-sref=".users"> {{ 'common.name.members' | translate }}
+              </a>
+          </li>
+
+          <li><a ui-sref=".documents"> {{ 'common.name.documents' | translate }}
+              </a>
+          </li>
+
+          <li><a ui-sref=".groups"> {{ 'common.name.group' | translate }}
+              </a>
+          </li>
+
+          <li><a ui-sref=".keys"> {{ 'common.name.key' | translate }}
+              </a>
+          </li>
+
+          <li><a ui-sref=".signin"> {{ 'action.sign-in' | translate }}
+              </a>
+          </li>
+
+          <li><a ui-sref=".signup"> {{ 'action.sign-up' | translate }}
+              </a>
+          </li>
+
+          <li><a ui-sref=".sign-off"> {{ 'action.exit' | translate }}
+              </a>
+          </li>
+
+ 
       </ul>
+      
+        <ul class="pull-right" >
+            <li class="pull-left" >
+            <p>
+                <a href="#" ng-click="switchLanguage('de')">
+                    <img style="width:25px; height:25px" src="assets/images/de.png"> 
+                </a>
+                    <a href="" ng-click="switchLanguage('en')">
+                        <img  style="width:25px; height:25px" src="assets/images/en.png"> 
+                    </a>
+                    <a href="" ng-click="switchLanguage('fr')">
+                    <img  style="width:25px; height:25px" src="assets/images/fr.png">
+                    </a>
+                    <a href="" ng-click="switchLanguage('fr')">
+                    <img  style="width:25px; height:25px" src="assets/images/cm.png">
+                    </a>
+            </p>
+            </li>
+        </ul>
 
     </div>
+
   </div>
 </nav>

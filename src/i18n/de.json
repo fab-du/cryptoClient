@@ -59,6 +59,8 @@
             "untrusted_user"      : "unvertrautet Benutzer",
             "trusted_user"        : "vertrautet Benutzer",
             "common_trusted_user" : "gemeinsame vertrautete Benutzer",
+            "upload_date"         : "hochgeladen am",
+            "last_modified"       : "zuletzt bearbeiten am",
             "shared_files"        : "geteilte Daten"
         }
 

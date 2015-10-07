@@ -3,29 +3,27 @@
 
   angular
     .module('cryptoClient')
-    .directive('userdirective', acmeNavbar);
+    .directive('userDirective', userDirective);
 
   /** @ngInject */
-  function acmeNavbar() {
+  function userDirective() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/navbar/navbar.html',
+      templateUrl: 'app/components/users/users.html',
       scope: {
           creationDate: '='
       },
-      controller: NavbarController,
-      controllerAs: 'vm',
+      controller: usersController,
+      controllerAs: 'CtrlUsers',
       bindToController: true
     };
 
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
-      var vm = this;
+    function usersController( $scope ) {
 
-      // "vm.creation" is avaible by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+
     }
   }
 
