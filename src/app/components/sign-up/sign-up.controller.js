@@ -9,7 +9,7 @@
 
             $scope.register = function( credentials ){
                 console.log( "log in have been clicked ");
-            }
+            };
 
         }
 

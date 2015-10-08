@@ -3,45 +3,45 @@
 
     angular
         .module('cryptoClient')
-        .factory('Auth', ['$http', '$cookieStore', Auth ]);
+        .factory('Auth', ['$http', '$cookieStore', 'routingConfig', Auth ]);
 
-        function Auth($http, $cookieStore){
+        function Auth($http, $cookieStore, routingConfig){
             var _self = this;
 
             _self.accessLevels = routingConfig.accessLevels;
             _self.userRoles = routingConfig.userRoles;
-            _self.currentUser = $cookieStore.get('user') || { username:'', role : userRoles.public};
+            _self.currentUser = $cookieStore.get('user') || { username:'', role : _self.userRoles.public};
 
             $cookieStore.remove('user');
 
             var changeUser = function( user ){
-                angular.extend(currentUser, user);
+                angular.extend(_self.currentUser, user);
             };
 
             _self.authorize =  function( accessLevel , role ){
                 if(role === undefined) {
-                    role = currentUser.role;
+                    role = _self.currentUser.role;
                 }
 
-                return accessLevel.bitMask & role.bitMask;
+                return _self.accessLevel.bitMask & _self.role.bitMask;
             };
 
-            _self.isLoggedIn = function( user, success, error ){
+            _self.isLoggedIn = function( user ){
                 if(user === undefined) {
-                    user = currentUser;
+                    user = _self.currentUser;
                 }
-                return user.role.title === userRoles.user.title || user.role.title === userRoles.admin.title;
+                return user.role.title === _self.userRoles.user.title || user.role.title === _self.userRoles.admin.title;
             };
 
             _self.register = function(user, success, error) {
-                $http.post('/register', user).success(function(res) {
+                $http.post('/sign-up', user).success(function(res) {
                     changeUser(res);
                     success();
                 }).error(error);
             };
 
             _self.login= function(user, success, error) {
-                $http.post('/login', user).success(function(user){
+                $http.post('/sign-in', user).success(function(user){
                     changeUser(user);
                     success(user);
                 }).error(error);
@@ -51,7 +51,7 @@
                 $http.post('/logout').success(function(){
                     changeUser({
                         username: '',
-                        role: userRoles.public
+                        role: _self.userRoles.public
                     });
                     success();
                 }).error(error);
@@ -60,4 +60,4 @@
             return _self;
         }
 
-})()
+})();

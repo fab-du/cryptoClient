@@ -22,6 +22,11 @@
           templateUrl: 'app/components/users/users.html',
           controller: 'userController'
       })
+      .state('home.users.details', {
+          url: '/user/:userId',
+          templateUrl: 'app/components/users/user.detail.html',
+          controller: 'userControllerDetail'
+      })
       .state('home.documents', {
           url: '/documents',
           templateUrl: 'app/components/documents/documents.html',
