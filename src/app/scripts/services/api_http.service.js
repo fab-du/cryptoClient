@@ -13,7 +13,6 @@ angular.module('cryptoClient')
   .factory('api_http', [ '$http', ApiHttp]);
 
 
-
 function ApiHttp( $http ){
  var _self = this;
 
@@ -28,7 +27,7 @@ function ApiHttp( $http ){
 
  _self.GET = function( url, callback ){
    callback = (typeof callback === 'function') ? callback : function() {};
-       _http('GET', url )
+       _http('GET', url, {} )
             .success(function( data, status){
                 callback( null, { data : data, status : status } );
             })
