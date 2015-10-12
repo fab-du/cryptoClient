@@ -1,3 +1,4 @@
+"use strict";
 angular.module('stateMock',[]);
 angular.module('stateMock').service("$state", function($q){
     this.expectedTransitions = [];
@@ -15,17 +16,17 @@ angular.module('stateMock').service("$state", function($q){
         var promise = deferred.promise;
         deferred.resolve();
         return promise;
-    }
+    };
     this.go = this.transitionTo;
     this.expectTransitionTo = function(stateName){
         this.expectedTransitions.push(stateName);
-    }
+    };
 
 
     this.ensureAllTransitionsHappened = function(){
         if(this.expectedTransitions.length > 0){
             throw Error("Not all transitions happened!");
         }
-    }
+    };
 });
 

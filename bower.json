@@ -12,6 +12,8 @@
     "angular-touch": "~1.4.0",
     "angular-translate": "~2.8.1",
     "angular-translate-loader-static-files": "~2.8.1",
+    "angular-ui-event": "~1.0.0",
+    "angular-ui-grid": "ng-grid#~3.0.7",
     "angular-ui-router": "~0.2.15",
     "animate.css": "~3.3.0",
     "bootstrap": "~3.3.4",

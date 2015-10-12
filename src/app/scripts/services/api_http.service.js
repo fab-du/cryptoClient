@@ -10,10 +10,10 @@
  * Factory in the cryptoClientApp.
  */
 angular.module('cryptoClient')
-  .factory('api_http', [ '$http', ApiHttp]);
+  .factory('api_http', [ '$http', '$log', ApiHttp]);
 
 
-function ApiHttp( $http ){
+function ApiHttp( $http, $log ){
  var _self = this;
 
  var _http = function( method , url, data ){
@@ -29,10 +29,10 @@ function ApiHttp( $http ){
    callback = (typeof callback === 'function') ? callback : function() {};
        _http('GET', url, {} )
             .success(function( data, status){
-                callback( null, { data : data, status : status } );
+                return callback( null, { data : data.data, status : status } );
             })
             .error( function( data, status ){
-                callback( status );
+                return callback( status );
             });
   };
 
@@ -52,7 +52,7 @@ function ApiHttp( $http ){
    callback = (typeof callback === 'function') ? callback : function() {};
        _http('PUT', url, data )
             .success(function( data, status){
-                callback( null, { data : data, status : status } );
+                callback( null, { data : data.data, status : status } );
             })
             .error( function( data, status ){
                 callback( status );

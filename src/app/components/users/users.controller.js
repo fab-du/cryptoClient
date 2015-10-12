@@ -3,22 +3,29 @@
 
     angular
         .module('cryptoClient')
-        .controller('userController', ['$scope', '$log', userController] ) 
+        .controller('userController', ['$scope', '$log', 'api_http', userController] ) 
         .controller('userControllerDetail', ['$scope', '$log', '$stateParams', userControllerDetail ]);
 
-        function userController( $scope, $log ){
-            $scope.users = [
-                { firstname : "fabrice", secondname : "dufils"  ,email : "dufils@dufils.com" },
-                { firstname : "tux",     secondname : "pengouin",email : "tux@tux.com" },
-                { firstname : "linus",   secondname : "torwalds",email : "linux@linux.org" },
-                { firstname : "frida",   secondname : "solange" ,email : "fs@cameroun.cm" }
-            ];
+        function userController( $scope, $log, api_http ){
+            $scope.users = { };
+            var users = function( err, data ){
+                    if( !err ){
+                        $scope.users = data.data; 
+                    }
+                    else{
+                        
+                    }
+            }
+               
+            api_http.GET('/users', users );
 
             $scope.remove = function( user, index ){
                     $scope.users.splice( index, 1 );
             };
 
         }
+
+
 
         function userControllerDetail( $scope , $log, $stateParams ){
             $log.log("userdetailcontroller");
