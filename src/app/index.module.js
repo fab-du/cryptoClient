@@ -2,6 +2,16 @@
   'use strict';
 
   angular
-    .module('cryptoClient', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'ui.bootstrap','pascalprecht.translate'  ]);
+    .module('cryptoClient', [
+                              'ngAnimate', 
+                              'ui.bootstrap', 
+                              'ngCookies', 
+                              'ngTouch', 
+                              'ngSanitize', 
+                              'ngResource', 
+                              'ui.router', 
+                              'pascalprecht.translate', 
+                              'blueimp.fileupload' 
+    ]);
 
 })();

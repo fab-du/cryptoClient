@@ -1,6 +1,9 @@
 {
     "lang":
     {
+        "lang" : "Language",
+        "german" : "german",
+        "english" : "english",
         "lang_de": "Lang: German",
         "lang_en": "Lang: English"
     },

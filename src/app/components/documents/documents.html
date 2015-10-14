@@ -1,8 +1,8 @@
-
 <div ng-controller="documentController" class="container">
 
     <div class="table-responsive">
     <div class="table-responsive col-md-8">
+
         <h2> Dokuments </h2> 
         <table data-click-to-select="true" data-toggle="table" class="table table-bordered table-striped">
             <thead>
@@ -38,18 +38,11 @@
         </table>
     </div>
 
-<input id="testUpload" type="file" fileupload name="files[]" data-url="/server/uploadFile" multiple done="uploadFinished(e, data)">
-
-<div class="well my-drop-zone" nv-file-over="" uploader="upload"></div>
-<input type="file" nv-file-select="" uploader="uploader" />
-
-<input 
-
-
-
-    
-    </div>
 </div>
 
+<div class='container' ng-controller="myCtrl">
+    <input type="file" file-model="myFile"/>
+    <button ng-click="uploadFile()">upload me</button>
+</div>
 
-
+</div>

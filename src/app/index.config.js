@@ -3,10 +3,11 @@
 
   angular
     .module('cryptoClient')
-    .config([ '$logProvider', 'toastr', '$translateProvider', '$httpProvider', config]);
+    .config(['$logProvider', 'toastr', '$translateProvider', '$httpProvider', config]);
+
 
   /** @ngInject */
-  function config($logProvider, toastr, $translateProvider, $httpProvider) {
+  function config( $logProvider, toastr, $translateProvider, $httpProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -15,6 +16,7 @@
     toastr.options.positionClass = 'toast-top-right';
     toastr.options.preventDuplicates = true;
     toastr.options.progressBar = true;
+
 
     $translateProvider.preferredLanguage('de');
     $translateProvider.useStaticFilesLoader({prefix : 'i18n/', suffix: '.json'});
