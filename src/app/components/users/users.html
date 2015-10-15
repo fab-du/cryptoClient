@@ -10,7 +10,7 @@
     </div>
 
     <div class="panel-body">
-        <ui-view></ui-view>
+        <ui-view id="mainid"></ui-view>
     </div>
 </div>
 
@@ -28,9 +28,9 @@
             </thead>
             <tbody>
             	<tr ng-repeat="user in users">
+                    <td data-align="center">{{user.id}}</td>
                     <td data-align="center">{{user.firstname}}</td>
                     <td data-align="center">{{user.secondname}}</td>
-                    <td data-align="center">{{user.firstname}}</td>
                     <td data-align="center">{{user.email}}    </td>
 
                     <!--
@@ -38,9 +38,9 @@
                        -item
                     -->
                     <td style="text-align: left; width:150px" > 
-                            <a class="btn btn-danger" ng-click="remove( user, $index )" ><span class="glyphicon glyphicon-minus" ></span></a>  
+                        <a class="btn btn-danger" ng-click="remove( user, {{user.id}} )" ><span class="glyphicon glyphicon-minus" ></span></a>  
                             <a class="btn btn-info"><span class="glyphicon glyphicon-pencil" ></span></a>
-                            <a class="btn btn-warning" ui-sref=".details({ userId : {{$index}} } )"><span class="glyphicon glyphicon-eye-open"></span> </a>
+                            <a class="btn btn-warning" ui-sref=".details({ userId : {{user.id}} } )"><span class="glyphicon glyphicon-eye-open"></span> </a>
 
                     </td>
 

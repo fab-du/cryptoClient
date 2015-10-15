@@ -1,16 +1,13 @@
 ( function(){
     'use strict';
-    
     angular
         .module('cryptoClient')
-        .controller('signinController', [ '$scope', signinController ] )
+        .controller('signinController', [ '$scope', '$log', signinController ]);
 
-        function signinController( $scope ) {
-
+        function signinController( $scope, $log ) {
             $scope.login = function( credentials ){
-                console.log( "log in have been clicked ");
-            }
-
+                $log.log( "log in have been clicked " + credentials );
+            };
         }
 
-})()
+})();

@@ -4,33 +4,31 @@
     angular
         .module('cryptoClient')
         .controller('userController', ['$scope', '$log', 'api_http', userController] ) 
-        .controller('userControllerDetail', ['$scope', '$log', '$stateParams', userControllerDetail ]);
+        .controller('userControllerDetail', ['$scope', '$log', '$stateParams', 'api_http', userControllerDetail ]);
 
         function userController( $scope, $log, api_http ){
             $scope.users = { };
-            var users = function( err, data ){
-                    if( !err ){
+            api_http.GET('http://localhost:8080/users', function( err, data ){
                         $scope.users = data.data; 
-                    }
-                    else{
-                        
-                    }
-            }
-               
-            api_http.GET('/users', users );
+                        $log.log( data.data );
+            });
 
             $scope.remove = function( user, index ){
-                    $scope.users.splice( index, 1 );
+                $scope.users.splice( index, 1 );
+                    api_http.DELETE( "/users/" + index, function( err ){
+                        if( !err ){
+                            $log.log( "perfect user deleted" );
+                        }
+                    });
             };
-
         }
 
 
 
-        function userControllerDetail( $scope , $log, $stateParams ){
-            $log.log("userdetailcontroller");
-            $scope.detailedUser = $scope.users[ $stateParams.userId ];
-            //probably make a request to get more info concerning the user
+        function userControllerDetail( $scope , $log, $stateParams, api_http ){
+            api_http.GET('/users/' + $stateParams.userId, function( err, data ){
+                    $scope.detailedUser = data.data;
+            });
         }
 
-})()
+})();

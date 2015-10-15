@@ -17,12 +17,12 @@
                 { name : 'group3', gv: 'admin', created_at:'10.10.2010'},
                 { name : 'group4', gv: 'admin', created_at:'10.10.2010'},
                 { name : 'group5', gv: 'admin', created_at:'10.10.2010'}
-            ]
+            ];
 
             $scope.remove = function( group,  index ){
                 $log.log( group );
                 $scope.groups.splice( index , 1 );
-            }
+            };
 
 
             $scope.toggleDropdown = function($event) {
@@ -49,7 +49,7 @@
                 $scope.selectWithOptionsIsVisible = true;
 
         }//}}}
-         function dropdownDirective( $parse ){//{{{
+         function dropdownDirective( $parse, $log ){//{{{
             return {
             restrict: 'A',
             link: function (scope, element, attrs) {
@@ -57,9 +57,12 @@
                 element.selectpicker('refresh');
                 
                 scope.$watch(attrs.ngModel, function (newVal, oldVal) {
+                    $log.log( oldVal );
                 scope.$parent[attrs.ngModel] = newVal;
                 scope.$evalAsync(function () {
-                    if (!attrs.ngOptions || /track by/.test(attrs.ngOptions)) element.val(newVal);
+                    if (!attrs.ngOptions || /track by/.test(attrs.ngOptions)){
+                       element.val(newVal);
+                    } 
                     element.selectpicker('refresh');
                 });
                 });
@@ -72,10 +75,10 @@
             }
             };
          }//}}}
-         function newgroupController( $scope, $log, $stateParams ){//{{{
+         function newgroupController( $scope, $log ){//{{{
              $log.log("here sind wir in new group controller");
          }//}}}
-         function findgroupController( $scope, $log, $stateParams ){//{{{
+         function findgroupController( $scope, $log ){//{{{
              $log.log("here sind wir in find group controller");
          }//}}}
             function groupdetailController( $scope, $log, $stateParams ){
@@ -84,4 +87,4 @@
             }
 
 
-})()
+})();

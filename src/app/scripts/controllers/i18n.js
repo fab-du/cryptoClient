@@ -14,7 +14,7 @@
         $scope.currentLanguage = $translate.use();
         $scope.$on('langchange', function(event, newkey ){
             $scope.currentLanguage = newkey;
-        })
+        });
     }]);
 
     function i18controller( $translate, $scope ){
@@ -25,10 +25,7 @@
                 $scope.$broadcast( 'langchange', key );
             }
         };
-
-        
-            
     }
 
-})()
+})();
 

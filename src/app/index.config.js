@@ -11,6 +11,10 @@
     // Enable log
     $logProvider.debugEnabled(true);
 
+    $httpProvider.defaults.useXDomain = true;
+     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+
     // Set options third-party lib
     toastr.options.timeOut = 3000;
     toastr.options.positionClass = 'toast-top-right';
@@ -21,7 +25,7 @@
     $translateProvider.preferredLanguage('de');
     $translateProvider.useStaticFilesLoader({prefix : 'i18n/', suffix: '.json'});
 
-    $httpProvider.interceptors.push(['$q', '$location', function($q, $location, $localStorage){
+    $httpProvider.interceptors.push(['$q', '$location', function($q, $location ){
        return {
             'request': function( config ){
                 config.headers = config.headers || {};

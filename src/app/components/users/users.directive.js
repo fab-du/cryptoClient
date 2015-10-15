@@ -21,9 +21,7 @@
     return directive;
 
     /** @ngInject */
-    function usersController( $scope ) {
-
-
+    function usersController(  ) {
     }
   }
 

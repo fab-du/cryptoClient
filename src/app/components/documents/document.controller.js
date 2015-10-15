@@ -4,7 +4,7 @@
     
     angular
         .module('cryptoClient')
-        .controller('documentController', [ '$scope',  documentController] )
+        .controller('documentController', [ '$scope',  documentController] );
 
         function documentController( $scope ) {
             $scope.documents = [
@@ -14,8 +14,7 @@
                 { name : 'doc4', path:'path4', upload_date :'04.04.2010', last_modified : '04.04.2010'},
                 { name : 'doc5', path:'path5', upload_date :'01.01.2012', last_modified : '01.01.2012'}
             
-            ]
-            
+            ];
         }
 
 var myApp = angular.module('cryptoClient');
@@ -36,27 +35,11 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-myApp.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
-        var fd = new FormData();
-        fd.append('file', file);
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
-        .success(function(){
-        })
-        .error(function(){
-        });
-    }
-}]);
 
 myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
-        console.log('file is ' );
-        console.dir(file);
         var uploadUrl = "/fileUpload";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
@@ -64,4 +47,4 @@ myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload)
 }]);
 
 
-})()
+})();

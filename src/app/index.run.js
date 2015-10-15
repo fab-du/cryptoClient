@@ -3,12 +3,13 @@
 
   angular
     .module('cryptoClient')
-    .run(['$rootScope', '$state', '$log', runBlock]);
+    .run(['$log', '$rootScope', runBlock]);
 
   /** @ngInject */
-  function runBlock( $rootScope, $state, $log) {
+  function runBlock( $log, $rootScope ) {
 
-    $rootScope.$on('$stateChangeStart', function( event, toState, toParams, fromState, fromParams ){
+    $rootScope.$on('$stateChangeStart', function( event ){
+        $log.log( event );
         /*
          *if( 'data' in toState || ('access' in toState.data) ){
          *    $rootScope.error = "Acces undefined for this State";
@@ -16,7 +17,7 @@
          *}
          */
 
-    })
+    });
 
     $log.debug('runBlock end');
   }
