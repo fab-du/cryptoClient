@@ -35,11 +35,11 @@
             </thead>
             <tbody>
             	<tr ng-repeat="group in groups">
-                    <td>  {{ group.index }}
+                    <td>  {{ group.id }}
                     </td>
                     <td> {{ group.name }}
                     </td>
-                    <td> {{ group.gv }}
+                    <td> {{ group.gv || 'really dude' }}
                     </td>
                     <td> {{ group.created_at  }}
                     </td>

@@ -11,16 +11,22 @@
         .directive('cryptdropdown', ['$parse', dropdownDirective ]);
 
         function groupController( $scope, $log ) {//{{{
-            $scope.groups = [
-                { name : 'group1', gv: 'admin', created_at:'10.10.2010'},
-                { name : 'group2', gv: 'admin', created_at:'10.10.2010'},
-                { name : 'group3', gv: 'admin', created_at:'10.10.2010'},
-                { name : 'group4', gv: 'admin', created_at:'10.10.2010'},
-                { name : 'group5', gv: 'admin', created_at:'10.10.2010'}
-            ];
+            api_http.GET( '/groups', function( err, data ){
+                if( !err ){
+                    $scope.groups = data.data;
+                }
+                else{
+                    $scope.groups = [
+                        { name : 'group1', gv: 'admin', created_at:'10.10.2010'},
+                        { name : 'group2', gv: 'admin', created_at:'10.10.2010'},
+                        { name : 'group3', gv: 'admin', created_at:'10.10.2010'},
+                        { name : 'group4', gv: 'admin', created_at:'10.10.2010'},
+                        { name : 'group5', gv: 'admin', created_at:'10.10.2010'}];
+                }
+            });
 
             $scope.remove = function( group,  index ){
-                $log.log( group );
+                $log.log( group );                                              i
                 $scope.groups.splice( index , 1 );
             };
 
